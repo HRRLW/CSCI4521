@@ -21,7 +21,7 @@ By limiting the scope to fewer stocks and key indicators, the project remains fe
 
 This project focuses on two primary research questions:
 
-1. How do neural network models (LSTM) compare with ensemble tree-based models (Random Forest) in predicting next-day stock price movements?
+1. How do deep sequential models (LSTM) compare with traditional ensemble models (Random Forest) in predicting next-day stock price movements? This comparison will highlight fundamental differences in how these models process financial data: LSTM emphasizes temporal dynamics within sequences, while Random Forest excels at discovering non-linear relationships between features.
 
 2. Which data source (technical indicators, economic data, or news sentiment) contributes most significantly to prediction accuracy?
 
@@ -68,7 +68,7 @@ I will implement and compare two distinct model architectures:
      - Min samples leaf (1, 2, 4)
    - Training strategy: 5-fold cross-validation
 
-This focused approach allows for thorough implementation and comparison within the project timeline.
+This focused approach allows for thorough implementation and comparison within the project timeline. The key distinction in this comparison lies in how each model processes information: LSTM networks are designed to capture sequential patterns and long-term dependencies in time series data, making them potentially more sensitive to evolving market dynamics. In contrast, Random Forest models excel at identifying complex non-linear relationships between features without requiring sequential structure, potentially making them more robust to noise and outliers in financial data. By comparing these fundamentally different approaches using identical inputs, the project aims to reveal which modeling paradigm better captures the underlying dynamics of stock price movements and which is more sensitive to macroeconomic indicators and sentiment features.
 
 ### Evaluation Metrics
 
