@@ -21,14 +21,14 @@ By limiting the scope to fewer stocks and key indicators, the project remains fe
 
 This project focuses on two primary research questions:
 
-1. How do neural network models (LSTM) compare with tree-based models (XGBoost) in predicting next-day stock price movements?
+1. How do neural network models (LSTM) compare with ensemble tree-based models (Random Forest) in predicting next-day stock price movements?
 
 2. Which data source (technical indicators, economic data, or news sentiment) contributes most significantly to prediction accuracy?
 
 The specific tasks include:
 - Creating a streamlined data pipeline that integrates the three data sources
 - Implementing basic feature engineering focused on proven technical indicators
-- Building and training two models: a PyTorch LSTM network and XGBoost
+- Building and training two models: a PyTorch LSTM network and Random Forest Regressor
 - Comparing model performance using standard evaluation metrics
 - Analyzing which features each model finds most important
 
@@ -36,10 +36,10 @@ The specific tasks include:
 
 Stock prediction using machine learning has been extensively studied. The GitHub repository https://github.com/Durpfish/stock-prediction provides an implementation of a stock prediction pipeline using Apache Airflow with linear regression models. My project builds upon this foundation with two key differences:
 
-1. Implementing more sophisticated models (LSTM and XGBoost)
-2. Conducting a direct comparison between neural network and tree-based approaches
+1. Implementing more sophisticated models (LSTM and Random Forest)
+2. Conducting a direct comparison between neural network and ensemble tree-based approaches
 
-Recent research by Fischer & Krauss (2018) demonstrated LSTM networks' effectiveness for stock prediction, achieving 53-55% directional accuracy. Meanwhile, tree-based models like XGBoost have shown strong performance in Kaggle competitions for financial prediction tasks. My project will provide a controlled comparison between these approaches using identical data inputs.
+Recent research by Fischer & Krauss (2018) demonstrated that LSTM networks can achieve directional accuracies of approximately 53.5% on out-of-sample stock movements. Meanwhile, Khaidem et al. (2016) reported that Random Forest models achieved next-day directional accuracies ranging from 44.5% to 58.2%. My project will provide a controlled comparison between these approaches using identical data inputs.
 
 ### Model Architectures and Training Strategy
 
@@ -57,15 +57,15 @@ I will implement and compare two distinct model architectures:
      - Learning rate (0.001, 0.01)
    - Training strategy: Adam optimizer with early stopping
 
-2. **XGBoost**:
-   - Architecture: Gradient boosting decision tree ensemble
+2. **Random Forest Regressor**:
+   - Architecture: Ensemble of decision trees using bootstrap aggregation
    - Input: Tabular data with engineered features
    - Output: Next-day adjusted close price
    - Hyperparameters to tune:
-     - Max depth (3, 5, 7)
-     - Learning rate (0.01, 0.1)
-     - Number of estimators (100, 200)
-     - Subsample ratio (0.8, 1.0)
+     - Number of trees (100, 200, 500)
+     - Max depth (None, 10, 20)
+     - Min samples split (2, 5, 10)
+     - Min samples leaf (1, 2, 4)
    - Training strategy: 5-fold cross-validation
 
 This focused approach allows for thorough implementation and comparison within the project timeline.
@@ -80,7 +80,7 @@ I will use the following metrics to evaluate and compare model performance:
 
 3. **Direction Accuracy**: Measures the percentage of correct predictions of price movement direction (up or down). This is particularly important for trading strategies.
 
-4. **Feature Importance Analysis**: For XGBoost, I will analyze feature importance scores; for LSTM, I will use a permutation-based approach to determine which features contribute most to predictions.
+4. **Feature Importance Analysis**: For Random Forest, I will analyze the built-in feature importance scores; for LSTM, I will use a permutation-based approach to determine which features contribute most to predictions.
 
 ### Planned Visualizations
 
@@ -93,7 +93,7 @@ The final report will include the following visualizations:
 3. **Prediction Error Analysis**: Box plots comparing prediction errors for both models across different stocks.
 
 4. **Feature Importance Visualization**: 
-   - For XGBoost: A horizontal bar chart showing features ranked by importance score
+   - For Random Forest: A horizontal bar chart showing features ranked by importance score
    - For LSTM: A bar chart showing feature importance based on permutation importance
 
 5. **Learning Curves**: Plots showing training and validation loss over epochs for the LSTM model.
@@ -116,7 +116,7 @@ As I am working individually, I will adhere to the following timeline based on t
 
 - **May 1-3**:
   - LSTM model implementation and training
-  - XGBoost model implementation and training
+  - Random Forest model implementation and training
 
 - **May 4-5**:
   - Model evaluation and comparison
