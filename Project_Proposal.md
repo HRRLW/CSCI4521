@@ -11,7 +11,7 @@ This project will utilize three complementary datasets to create a focused stock
 
 1. **Stock Price Data**: Historical stock price data from Yahoo Finance via the `yfinance` Python library. To keep the project manageable, I will focus on 5 major tech stocks (AAPL, MSFT, GOOG, AMZN, META) over a 3-year period (2020-2023). This data includes daily open, high, low, close prices, adjusted close prices, and trading volumes.
 
-2. **Economic Indicators**: Key macroeconomic data from the Federal Reserve Economic Data (FRED) using the `fredapi` Python library. I will select a focused set of indicators: Unemployment Rate, Consumer Price Index (CPI), Federal Funds Rate, and S&P 500 index. These indicators will be processed to align with daily stock data.
+2. **Economic Indicators**: Key macroeconomic data from the Federal Reserve Economic Data (FRED) using the 'fredapi' Python library. I will select a focused set of indicators: Unemployment Rate, Consumer Price Index (CPI), Federal Funds Rate, and S&P 500 index. These indicators will be processed to align with daily stock data.
 
 3. **Financial News Headlines**: News sentiment data from the Hugging Face dataset "benstaf/FNSPID-filtered-nasdaq-100". To simplify the analysis, I will focus only on article headlines rather than full content, and implement a dictionary-based approach using VADER for sentiment analysis, avoiding pre-trained neural networks.
 
